@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@media print {
+  /* Configuração padrão de página para documentos e relatórios A4 / Tamanho padrão */
+  @page {
+    margin: 10mm 12mm;
+    size: auto;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Utilitários padrão de impressão */
+  .print\:hidden {
+    display: none !important;
+  }
+
+  .print\:block {
+    display: block !important;
+  }
+
+  .print\:flex {
+    display: flex !important;
+  }
+
+  .print\:inline-block {
+    display: inline-block !important;
+  }
+
+  /* Evitar quebras de página indesejadas */
+  .print-avoid-break {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* =========================================================================
+     MODO CUPOM / TALÃO TÉRMICO (80mm)
+     Ativado exclusivamente quando a classe 'print-receipt-mode' estiver no body
+     ========================================================================= */
+  body.print-receipt-mode {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 80mm !important;
+    max-width: 80mm !important;
+  }
+
+  body.print-receipt-mode * {
+    visibility: hidden;
+  }
+
+  body.print-receipt-mode #printable-ticket,
+  body.print-receipt-mode #printable-ticket *,
+  body.print-receipt-mode #printable-prebill,
+  body.print-receipt-mode #printable-prebill * {
+    visibility: visible;
+  }
+
+  body.print-receipt-mode #printable-ticket,
+  body.print-receipt-mode #printable-prebill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 80mm !important;
+    max-width: 80mm !important;
+    margin: 0 auto !important;
+    padding: 3mm 4mm !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ASSX Tech PDV</title>
+    <meta name="description" content="ASSX Tech PDV - Sistema de Ponto de Venda (POS) e Gestão Comercial." />
+    <meta property="og:title" content="ASSX Tech PDV" />
+    <meta property="og:description" content="ASSX Tech PDV - Sistema de Ponto de Venda (POS) e Gestão Comercial." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/assets/logos/official_logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/png" href="/assets/logos/official_logo.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#f59e0b" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+      (function() {
+        // Ensure window.fetch has both a getter and a setter so that extensions
+        // attempting direct assignment (window.fetch = ...) do not throw TypeError in strict mode.
+        try {
+          var _currentFetch = window.fetch;
+          Object.defineProperty(window, 'fetch', {
+            get: function() {
+              return _currentFetch;
+            },
+            set: function(val) {
+              _currentFetch = val;
+            },
+            configurable: true,
+            enumerable: true
+          });
+        } catch (e) {
+          // Ignore if already configured or unconfigurable
+        }
+
+        // Filter out unhandled extension runtime errors from crashing preview
+        window.addEventListener('error', function(event) {
+          if (event && event.filename && (event.filename.indexOf('chrome-extension://') !== -1 || event.filename.indexOf('moz-extension://') !== -1)) {
+            event.preventDefault();
+            event.stopPropagation();
+            return true;
+          }
+          if (event && event.message && event.message.indexOf('Cannot set property fetch') !== -1) {
+            event.preventDefault();
+            event.stopPropagation();
+            return true;
+          }
+        }, true);
+      })();
+    </script>
+  </head>
+  <body class="bg-stone-100 text-stone-900 antialiased selection:bg-amber-500 selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

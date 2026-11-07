@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix Remix Sabores \u0026 Nações - POS e Faturação",
+  "description": "Sistema de ponto de venda e faturação integrada para o restaurante Sabores \u0026 Nações em Portugal.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
