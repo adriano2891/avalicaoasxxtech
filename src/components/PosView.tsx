@@ -74,6 +74,7 @@ export const PosView: React.FC<PosViewProps> = ({
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [onlyFavorites, setOnlyFavorites] = useState(false);
+  const [mobilePosTab, setMobilePosTab] = useState<'catalog' | 'cart'>('catalog');
 
   // Estado do Pedido Atual
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -471,9 +472,44 @@ export const PosView: React.FC<PosViewProps> = ({
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 h-[calc(100vh-130px)] min-h-[580px] max-h-[calc(100vh-110px)]">
+    <div className="flex flex-col lg:grid lg:grid-cols-12 gap-3 h-auto lg:h-[calc(100vh-130px)] lg:min-h-[580px] lg:max-h-[calc(100vh-110px)]">
+      {/* SELETOR MOBILE: PRODUTOS OU PEDIDO / CAIXA */}
+      <div className="lg:hidden flex items-center p-1 bg-[#0d1520] rounded-xl border border-slate-800 gap-1 shrink-0">
+        <button
+          type="button"
+          onClick={() => setMobilePosTab('catalog')}
+          className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+            mobilePosTab === 'catalog'
+              ? 'bg-amber-500 text-stone-950 shadow-xs ring-1 ring-amber-600/30'
+              : 'text-stone-400 hover:text-white'
+          }`}
+        >
+          <Utensils className="w-3.5 h-3.5" />
+          <span>Catálogo de Produtos</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => setMobilePosTab('cart')}
+          className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-bold transition-all relative cursor-pointer ${
+            mobilePosTab === 'cart'
+              ? 'bg-emerald-500 text-stone-950 shadow-xs ring-1 ring-emerald-600/30'
+              : 'text-stone-400 hover:text-white'
+          }`}
+        >
+          <ShoppingCart className="w-3.5 h-3.5" />
+          <span>Carrinho ({cartItems.reduce((acc, i) => acc + i.quantity, 0)})</span>
+          {cartItems.length > 0 && (
+            <span className="ml-1 text-[11px] font-mono font-black text-stone-950">
+              {formatCurrency(totals.final)}
+            </span>
+          )}
+        </button>
+      </div>
+
       {/* COLUNA ESQUERDA: CATÁLOGO DE PRODUTOS & IMAGENS (Cols 1-7) */}
-      <div className="lg:col-span-7 xl:col-span-7 2xl:col-span-7 flex flex-col h-full bg-[#0d1520] rounded-2xl border border-slate-800 shadow-xl overflow-hidden">
+      <div className={`lg:col-span-7 xl:col-span-7 2xl:col-span-7 flex flex-col h-[70vh] sm:h-[75vh] lg:h-full bg-[#0d1520] rounded-2xl border border-slate-800 shadow-xl overflow-hidden ${
+        mobilePosTab === 'catalog' ? 'flex' : 'hidden lg:flex'
+      }`}>
         {/* Barra Superior do Catálogo: Filtros e Pesquisa */}
         <div className="p-3 border-b border-slate-800 space-y-2.5 bg-[#0d1520] shrink-0">
           <div className="flex items-center gap-2.5 justify-between">
@@ -592,15 +628,47 @@ export const PosView: React.FC<PosViewProps> = ({
             </div>
           )}
         </div>
+
+        {/* Barra Flutuante Mobile no Catálogo: Ver Pedido */}
+        {cartItems.length > 0 && (
+          <div className="lg:hidden p-3 bg-slate-950 border-t border-slate-800 flex items-center justify-between gap-3 shrink-0">
+            <div>
+              <span className="text-[11px] text-stone-400 block font-medium">
+                {cartItems.reduce((acc, i) => acc + i.quantity, 0)} item(ns) selecionado(s)
+              </span>
+              <span className="text-base font-black text-emerald-400 font-mono">
+                {formatCurrency(totals.final)}
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={() => setMobilePosTab('cart')}
+              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-stone-950 font-bold text-xs sm:text-sm active:scale-95 transition-all shadow-md cursor-pointer"
+            >
+              <span>Conferir Pedido</span>
+              <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+            </button>
+          </div>
+        )}
       </div>
 
-      {/* COLUNA DIREITA: CAIXA PDV PROFISSIONAL ASSX TECH (Ajustado, sem cortes e 100% responsivo) */}
-      <div className="lg:col-span-5 xl:col-span-5 2xl:col-span-5 flex flex-col h-full bg-[#0d1520] rounded-2xl border-2 border-emerald-500 shadow-2xl overflow-hidden text-white">
+      {/* COLUNA DIREITA: CAIXA PDV PROFISSIONAL ASSX TECH */}
+      <div className={`lg:col-span-5 xl:col-span-5 2xl:col-span-5 flex flex-col h-[82vh] lg:h-full bg-[#0d1520] rounded-2xl border-2 border-emerald-500 shadow-2xl overflow-hidden text-white ${
+        mobilePosTab === 'cart' ? 'flex' : 'hidden lg:flex'
+      }`}>
         {/* 1. CABEÇALHO DA VENDA */}
         <div className="p-2.5 sm:p-3 border-b border-slate-800 bg-[#0d1520] space-y-2 shrink-0">
           <div className="flex flex-wrap sm:flex-nowrap items-center justify-between gap-2">
             {/* Ícone e Título da Venda */}
             <div className="flex items-center gap-2 shrink-0">
+              <button
+                type="button"
+                onClick={() => setMobilePosTab('catalog')}
+                className="lg:hidden p-1.5 rounded-lg bg-slate-900 border border-slate-800 text-amber-400 hover:text-amber-300"
+                title="Voltar ao catálogo de produtos"
+              >
+                <Utensils className="w-4 h-4" />
+              </button>
               <div className="w-9 h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/40 flex items-center justify-center text-emerald-400 shrink-0 shadow-xs shadow-emerald-500/20">
                 <ShoppingCart className="w-5 h-5 stroke-[2.5]" />
               </div>

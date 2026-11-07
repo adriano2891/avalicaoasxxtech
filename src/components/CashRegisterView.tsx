@@ -140,7 +140,7 @@ export const CashRegisterView: React.FC<CashRegisterViewProps> = ({
         </div>
 
         {activeShift ? (
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
             <button
               onClick={() => {
                 setMovementType('entrada');
@@ -319,7 +319,7 @@ export const CashRegisterView: React.FC<CashRegisterViewProps> = ({
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs">
+          <table className="w-full text-left text-xs min-w-[700px]">
             <thead className="bg-stone-50 text-stone-600 uppercase font-semibold border-b border-stone-200">
               <tr>
                 <th className="py-3 px-4">Turno</th>
@@ -380,15 +380,15 @@ export const CashRegisterView: React.FC<CashRegisterViewProps> = ({
 
       {/* MODAL DE ABERTURA */}
       {isOpeningModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4">
-          <div className="w-full max-w-sm bg-white rounded-2xl shadow-xl overflow-hidden border border-stone-200">
-            <div className="p-4 bg-stone-900 text-white flex items-center justify-between">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 overflow-y-auto">
+          <div className="w-full max-w-sm bg-white rounded-2xl shadow-xl overflow-hidden border border-stone-200 max-h-[92vh] flex flex-col">
+            <div className="p-4 bg-stone-900 text-white flex items-center justify-between shrink-0">
               <h4 className="font-bold text-sm">Abertura de Sessão de Caixa</h4>
               <button onClick={() => setIsOpeningModalOpen(false)} className="text-stone-400 hover:text-white">
                 <X className="w-5 h-5" />
               </button>
             </div>
-            <form onSubmit={handleOpenShift} className="p-5 space-y-4 text-xs">
+            <form onSubmit={handleOpenShift} className="p-5 space-y-4 text-xs overflow-y-auto">
               <div>
                 <label className="block font-bold text-stone-700 mb-1">
                   Fundo Inicial de Troco (R$):
@@ -427,9 +427,9 @@ export const CashRegisterView: React.FC<CashRegisterViewProps> = ({
 
       {/* MODAL DE ENTRADA / SANGRIA */}
       {isMovementModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4">
-          <div className="w-full max-w-sm bg-white rounded-2xl shadow-xl overflow-hidden border border-stone-200">
-            <div className="p-4 bg-stone-900 text-white flex items-center justify-between">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 overflow-y-auto">
+          <div className="w-full max-w-sm bg-white rounded-2xl shadow-xl overflow-hidden border border-stone-200 max-h-[92vh] flex flex-col">
+            <div className="p-4 bg-stone-900 text-white flex items-center justify-between shrink-0">
               <h4 className="font-bold text-sm capitalize">
                 {movementType === 'entrada' ? 'Entrada Manual de Dinheiro' : 'Saída / Sangria de Caixa'}
               </h4>
@@ -437,7 +437,7 @@ export const CashRegisterView: React.FC<CashRegisterViewProps> = ({
                 <X className="w-5 h-5" />
               </button>
             </div>
-            <form onSubmit={handleAddMovement} className="p-5 space-y-3.5 text-xs">
+            <form onSubmit={handleAddMovement} className="p-5 space-y-3.5 text-xs overflow-y-auto">
               <div>
                 <label className="block font-bold text-stone-700 mb-1">Valor (R$):</label>
                 <input
@@ -484,15 +484,15 @@ export const CashRegisterView: React.FC<CashRegisterViewProps> = ({
 
       {/* MODAL DE FECHO DE CAIXA */}
       {isClosingModalOpen && activeShift && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4">
-          <div className="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden border border-stone-200">
-            <div className="p-4 bg-stone-900 text-white flex items-center justify-between">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 overflow-y-auto">
+          <div className="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden border border-stone-200 max-h-[92vh] flex flex-col">
+            <div className="p-4 bg-stone-900 text-white flex items-center justify-between shrink-0">
               <h4 className="font-bold text-sm">Fecho de Caixa #{activeShift.shiftNumber}</h4>
               <button onClick={() => setIsClosingModalOpen(false)} className="text-stone-400 hover:text-white">
                 <X className="w-5 h-5" />
               </button>
             </div>
-            <form onSubmit={handleCloseShift} className="p-5 space-y-4 text-xs">
+            <form onSubmit={handleCloseShift} className="p-5 space-y-4 text-xs overflow-y-auto">
               <div className="p-3 rounded-xl bg-stone-100 border border-stone-200 space-y-1">
                 <div className="flex justify-between">
                   <span className="text-stone-600">Dinheiro Calculado pelo Sistema:</span>

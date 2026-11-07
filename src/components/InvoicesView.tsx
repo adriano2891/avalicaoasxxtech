@@ -210,7 +210,7 @@ export const InvoicesView: React.FC<InvoicesViewProps> = ({ company, currentUser
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs">
+            <table className="w-full text-left text-xs min-w-[760px]">
               <thead className="bg-stone-50 text-stone-600 uppercase font-semibold border-b border-stone-200">
                 <tr>
                   <th className="py-3 px-4">Tipo</th>
@@ -302,9 +302,9 @@ export const InvoicesView: React.FC<InvoicesViewProps> = ({ company, currentUser
 
       {/* MODAL DE EMISSÃO DE NOTA DE CRÉDITO (DOCUMENTO RETIFICATIVO AT) */}
       {ncTargetDoc && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4">
-          <div className="w-full max-w-lg bg-white rounded-2xl shadow-xl overflow-hidden border border-stone-200">
-            <div className="p-4 bg-stone-900 text-white flex items-center justify-between">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 overflow-y-auto">
+          <div className="w-full max-w-lg bg-white rounded-2xl shadow-xl overflow-hidden border border-stone-200 max-h-[92vh] flex flex-col">
+            <div className="p-4 bg-stone-900 text-white flex items-center justify-between shrink-0">
               <div>
                 <h3 className="font-bold text-sm sm:text-base">
                   Emitir Nota de Crédito Retificativa
@@ -318,7 +318,7 @@ export const InvoicesView: React.FC<InvoicesViewProps> = ({ company, currentUser
               </button>
             </div>
 
-            <form onSubmit={handleEmitCreditNote} className="p-5 space-y-4 text-xs">
+            <form onSubmit={handleEmitCreditNote} className="p-5 space-y-4 text-xs overflow-y-auto">
               <div className="p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 leading-relaxed">
                 <strong>Enquadramento Legal (Art. 29º do CIVA):</strong>
                 <p className="mt-1">

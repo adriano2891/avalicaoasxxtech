@@ -120,7 +120,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({ company, currentUser =
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
           {/* Seletor de Período */}
           <div className="flex bg-stone-100 p-1 rounded-xl text-xs font-bold">
             <button
@@ -215,7 +215,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({ company, currentUser =
               Detalhamento de Tributos e Alíquotas
             </h3>
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs border border-stone-200 print:border-stone-300">
+              <table className="w-full text-left text-xs border border-stone-200 print:border-stone-300 min-w-[500px]">
                 <thead className="bg-stone-50 text-stone-600 uppercase font-semibold border-b border-stone-200 print:bg-stone-100 print:border-stone-300">
                   <tr>
                     <th className="py-2.5 px-4">Alíquota Aplicável</th>

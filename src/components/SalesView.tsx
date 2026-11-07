@@ -199,7 +199,7 @@ export const SalesView: React.FC<SalesViewProps> = ({ company, currentUser }) =>
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs">
+            <table className="w-full text-left text-xs min-w-[720px]">
               <thead className="bg-stone-50 text-stone-600 uppercase font-semibold border-b border-stone-200">
                 <tr>
                   <th className="py-3 px-4">Registo / Data</th>
@@ -279,7 +279,7 @@ export const SalesView: React.FC<SalesViewProps> = ({ company, currentUser }) =>
       {/* MODAL DE DETALHES DA VENDA */}
       {selectedSale && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 overflow-y-auto">
-          <div className="w-full max-w-lg bg-white rounded-2xl shadow-xl overflow-hidden border border-stone-200">
+          <div className="w-full max-w-lg bg-white rounded-2xl shadow-xl overflow-hidden border border-stone-200 max-h-[92vh] flex flex-col">
             <div className="p-4 bg-stone-900 text-white flex items-center justify-between">
               <div>
                 <h3 className="font-extrabold text-sm sm:text-base">

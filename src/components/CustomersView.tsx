@@ -196,7 +196,7 @@ export const CustomersView: React.FC<CustomersViewProps> = ({ currentUser }) => 
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs">
+            <table className="w-full text-left text-xs min-w-[720px]">
               <thead className="bg-stone-50 text-stone-600 uppercase font-semibold border-b border-stone-200">
                 <tr>
                   <th className="py-3 px-4">Nome / Razão Social</th>
@@ -274,9 +274,9 @@ export const CustomersView: React.FC<CustomersViewProps> = ({ currentUser }) => 
 
       {/* MODAL CLIENTE */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4">
-          <div className="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden border border-stone-200">
-            <div className="p-4 bg-stone-900 text-white flex items-center justify-between">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 overflow-y-auto">
+          <div className="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden border border-stone-200 max-h-[92vh] flex flex-col">
+            <div className="p-4 bg-stone-900 text-white flex items-center justify-between shrink-0">
               <h3 className="font-bold text-sm sm:text-base">
                 {editingCustomer ? 'Editar Ficha de Cliente' : 'Registar Novo Cliente'}
               </h3>
@@ -285,7 +285,7 @@ export const CustomersView: React.FC<CustomersViewProps> = ({ currentUser }) => 
               </button>
             </div>
 
-            <form onSubmit={handleSaveCustomer} className="p-5 space-y-3.5 text-xs">
+            <form onSubmit={handleSaveCustomer} className="p-5 space-y-3.5 text-xs overflow-y-auto">
               <div>
                 <label className="block font-bold text-stone-700 mb-1">Nome Completo ou Razão Social:</label>
                 <input

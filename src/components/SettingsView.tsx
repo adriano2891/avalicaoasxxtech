@@ -166,10 +166,10 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
   return (
     <div className="space-y-6">
       {/* Subnavegação de Configurações */}
-      <div className="flex border-b border-stone-200 bg-white rounded-2xl p-2 shadow-xs gap-1.5 overflow-x-auto">
+      <div className="flex border-b border-stone-200 bg-white rounded-2xl p-2 shadow-xs gap-1.5 overflow-x-auto scrollbar-none no-scrollbar">
         <button
           onClick={() => setActiveSection('company')}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
+          className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap shrink-0 cursor-pointer ${
             activeSection === 'company'
               ? 'bg-amber-500 text-stone-950 shadow-xs'
               : 'text-stone-600 hover:text-stone-950 hover:bg-stone-100'
@@ -181,7 +181,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
 
         <button
           onClick={() => setActiveSection('certified')}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
+          className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap shrink-0 cursor-pointer ${
             activeSection === 'certified'
               ? 'bg-amber-500 text-stone-950 shadow-xs'
               : 'text-stone-600 hover:text-stone-950 hover:bg-stone-100'
@@ -193,7 +193,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
 
         <button
           onClick={() => setActiveSection('users')}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
+          className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap shrink-0 cursor-pointer ${
             activeSection === 'users'
               ? 'bg-amber-500 text-stone-950 shadow-xs'
               : 'text-stone-600 hover:text-stone-950 hover:bg-stone-100'
@@ -205,7 +205,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
 
         <button
           onClick={() => setActiveSection('logs')}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
+          className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap shrink-0 cursor-pointer ${
             activeSection === 'logs'
               ? 'bg-amber-500 text-stone-950 shadow-xs'
               : 'text-stone-600 hover:text-stone-950 hover:bg-stone-100'

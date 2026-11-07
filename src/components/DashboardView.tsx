@@ -93,9 +93,9 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
       {/* Banner de Avisos Importantes */}
       <div className="space-y-3">
         {!activeShiftOpen && (
-          <div className="flex items-center justify-between p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 shadow-xs">
-            <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-amber-100 text-amber-800">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 shadow-xs">
+            <div className="flex items-start sm:items-center gap-3">
+              <div className="p-2 rounded-lg bg-amber-100 text-amber-800 shrink-0">
                 <Wallet className="w-5 h-5" />
               </div>
               <div>
@@ -107,7 +107,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             </div>
             <button
               onClick={onOpenCash}
-              className="px-3.5 py-1.5 text-xs font-bold rounded-lg bg-amber-600 hover:bg-amber-700 text-white transition-colors"
+              className="w-full sm:w-auto px-4 py-2 text-xs font-bold rounded-lg bg-amber-600 hover:bg-amber-700 text-white transition-colors shrink-0 text-center cursor-pointer"
             >
               Abrir Caixa
             </button>
@@ -115,9 +115,9 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         )}
 
         {pendingCount > 0 && (
-          <div className="flex items-center justify-between p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-900 shadow-xs">
-            <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-rose-100 text-rose-800">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-900 shadow-xs">
+            <div className="flex items-start sm:items-center gap-3">
+              <div className="p-2 rounded-lg bg-rose-100 text-rose-800 shrink-0">
                 <ShieldAlert className="w-5 h-5" />
               </div>
               <div>
@@ -131,7 +131,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             </div>
             <button
               onClick={onViewPendingInvoices}
-              className="px-3.5 py-1.5 text-xs font-bold rounded-lg bg-rose-600 hover:bg-rose-700 text-white transition-colors flex items-center gap-1.5"
+              className="w-full sm:w-auto px-4 py-2 text-xs font-bold rounded-lg bg-rose-600 hover:bg-rose-700 text-white transition-colors flex items-center justify-center gap-1.5 shrink-0 cursor-pointer"
             >
               <span>Resolver Pendências</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -331,7 +331,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs">
+            <table className="w-full text-left text-xs min-w-[680px]">
               <thead className="bg-stone-50 text-stone-600 uppercase font-semibold border-b border-stone-200">
                 <tr>
                   <th className="py-3 px-4">Documento</th>

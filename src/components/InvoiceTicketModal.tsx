@@ -528,7 +528,7 @@ Obrigado pela preferência!
 
         {/* BARRA DE AÇÕES PRINCIPAIS (IMPRIMIR, BAIXAR NOTA, WHATSAPP COM PDF) */}
         <div className="px-3 sm:px-5 py-2.5 bg-stone-950/90 border-b border-stone-800/80 shrink-0 print:hidden">
-          <div className="grid grid-cols-4 gap-1.5 sm:gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2">
             
             {/* 1. IMPRIMIR NOTA */}
             <button
