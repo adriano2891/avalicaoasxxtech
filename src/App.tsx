@@ -23,7 +23,6 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [activeShift, setActiveShift] = useState<CashShift | null>(null);
   const [pendingInvoicesCount, setPendingInvoicesCount] = useState<number>(0);
-  const [isLocalMode, setIsLocalMode] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const [showDirectStartButton, setShowDirectStartButton] = useState<boolean>(false);
 
@@ -38,7 +37,6 @@ export default function App() {
     setCurrentUser(fallbackUsers[0]);
     setActiveShift(fallbackShift);
     setPendingInvoicesCount(dash.pendingCount || 0);
-    setIsLocalMode(true);
     setLoading(false);
   };
 
@@ -63,7 +61,6 @@ export default function App() {
       if (dashReport) {
         setPendingInvoicesCount(dashReport.pendingCount || 0);
       }
-      setIsLocalMode(api.isLocalMode());
     } catch (err) {
       console.warn('Iniciando em modo contingência / LocalStore:', err);
       initLocalFallback();
@@ -231,18 +228,8 @@ export default function App() {
           <span>
             &copy; 2026 <strong>{APP_CONFIG.appName}</strong> &bull; {APP_CONFIG.company.legalName} &bull; {APP_CONFIG.demoAddress.formatted} <span className="text-[10px] text-stone-400">({APP_CONFIG.demoAddress.notice})</span>
           </span>
-          <span className="flex items-center gap-2 font-medium text-stone-600">
-            {isLocalMode ? (
-              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-50 text-amber-750 border border-amber-200 text-[10px] font-semibold" title="Funcionando em modo autônomo no navegador (Netlify/Offline). Dados salvos localmente.">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
-                <span>Modo Local / Netlify (Dados no Navegador)</span>
-              </span>
-            ) : (
-              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-semibold">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                <span>Servidor Online</span>
-              </span>
-            )}
+          <span className="flex items-center gap-1.5 font-medium text-stone-600">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block" />
             <span>Sistema Operacional de Vendas &amp; PDV</span>
           </span>
         </div>
